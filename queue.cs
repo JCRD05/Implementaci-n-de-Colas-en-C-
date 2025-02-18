@@ -32,14 +32,18 @@ namespace Queue
         // Método que imprime el estado actual de la cola
         public void show()
         {
-            node current = head;
-            Console.WriteLine("\nEstado actual de la cola \n");
-            for(int i = 0; i < length; i++)
+            if(length == 0){ Console.WriteLine("La cola esta vacia"); }
+            else
             {
-                Console.WriteLine(current.data); // Imprime cada elemento de la cola
-                current = current.next; // Avanza al siguiente nodo
+                node current = head;
+                Console.WriteLine("\nEstado actual de la cola \n");
+                for(int i = 0; i < length; i++)
+                {
+                    Console.WriteLine(current.data); // Imprime cada elemento de la cola
+                    current = current.next; // Avanza al siguiente nodo
+                }
+                Console.WriteLine("\n");
             }
-            Console.WriteLine("\n");
         }
         
         // Método que agrega un elemento al final de la cola
@@ -70,14 +74,14 @@ namespace Queue
         // Método que muestra el primer elemento de la cola sin eliminarlo
         public void peek()
         {
-            if(length == 0){ Console.WriteLine("La cola no tiene ningún elemento"); }
+            if(length == 0){ return; }
             else { Console.WriteLine("El primero en la fila es: " + head.data + "\n"); }
         }
         
         // Método que muestra el último elemento de la cola sin eliminarlo
         public void rear()
         {
-            if(length == 0){ Console.WriteLine("La cola no tiene ningún elemento"); }
+            if(length == 0){ return; }
             else { Console.WriteLine("El último en la fila es: " + tail.data + "\n"); }
         }
     }
