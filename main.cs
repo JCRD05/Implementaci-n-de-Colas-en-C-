@@ -88,6 +88,6 @@ class Program
             // Si el usuario elige salir, termina el programa
             if (option == 4) { return; }
         } 
-        while (Exit() && (option > 0 && option < 4)); // Continúa mientras el usuario no elija salir
+        while (Exit() || (option > 0 && option < 4)); // Continúa mientras el usuario no elija salir
     }
 }
