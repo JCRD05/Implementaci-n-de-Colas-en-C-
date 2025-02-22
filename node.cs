@@ -5,30 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Queue
+namespace DataStructures
 {
-    // Clase que representa un nodo de una estructura de datos enlazada
-    class node
+    class Node
     {
-        public object data; // Dato almacenado en el nodo
-        public node next;   // Referencia al siguiente nodo en la estructura
+        public object data; // Dato que guarda el nodo
+        public Node next; // Direccion de memoria del nodo siguiente
         
-        // Constructor que inicializa el nodo con un dato y una referencia al siguiente nodo
-        public node(object data, node next)
+        // Constructores de los nodos
+        public Node(object data, Node next)
         {
             this.data = data;
             this.next = next;
         }
         
-        // Constructor que inicializa el nodo con un dato y sin referencia a otro nodo
-        public node(object data)
+        public Node(object data)
         {
             this.data = data;
             next = null;
         }
         
-        // Constructor por defecto que inicializa el nodo sin datos y sin referencia a otro nodo
-        public node()
+        public Node()
         {
             data = null;
             next = null;
