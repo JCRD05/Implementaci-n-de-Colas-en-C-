@@ -1,88 +1,88 @@
 using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Queue;
 
-namespace Queue
+namespace DataStructures
 {
-    // Clase que implementa una estructura de datos tipo Cola (Queue)
-    class queue
+    class Queue
     {
-        public node head; // Nodo que representa el frente de la cola
-        public node tail; // Nodo que representa el final de la cola
-        private int length; // Número de elementos en la cola
+        public Node head; // Primer elemento de la queue
+        public Node tail; // Ultimo elemento de la queue
+        public int length; // Tamaño de la queue
         
-        // Constructor que inicializa una cola vacía
-        public queue()
+        // Constructor de la queue 
+        public Queue()
         {
             head = tail = null;
             length = 0;
         }
         
-        // Método que muestra la cantidad de elementos en la cola
-        public void size()
+        // Metodo que imprime la queue
+        public void Print()
         {
-            Console.WriteLine(length + "\n");
-            return;
-        }
-        
-        // Método que imprime el estado actual de la cola
-        public void show()
-        {
-            if(length == 0){ Console.WriteLine("La cola esta vacia"); }
-            else
+            if(IsEmpty())
             {
-                node current = head;
-                Console.WriteLine("\nEstado actual de la cola \n");
-                for(int i = 0; i < length; i++)
-                {
-                    Console.WriteLine(current.data); // Imprime cada elemento de la cola
-                    current = current.next; // Avanza al siguiente nodo
-                }
-                Console.WriteLine("\n");
+                Console.WriteLine("La lista esta vacia\n");
+                Thread.Sleep(500);
+                return;
             }
+            
+            Node current = head;
+            for(int i = 0; i < length; i++)
+            {
+                Console.WriteLine(current.data);
+                current = current.next;
+            }
+            Console.WriteLine();
+            Thread.Sleep(500);
         }
         
-        // Método que agrega un elemento al final de la cola
-        public void enqueue(object data)
+        // Metodo que agrega un elemento al final de la queue
+        public void Enqueue(object data)
         {
-            if(length == 0){ head = tail = new node(data); } // Si la cola está vacía, el nuevo nodo es tanto head como tail
-            else{ tail = tail.next = new node(data); } // Si no está vacía, se agrega un nuevo nodo al final
-            length++; // Aumenta el tamaño de la cola
-            show(); // Muestra el estado actual de la cola
+            if(IsEmpty()) { head = tail = new Node(data); }
+            else { tail = tail.next = new Node(data); }
+            length++;
         }
         
-        // Método que elimina el primer elemento de la cola y lo devuelve
-        public object dequeue()
+        // Metodo que elimina un elemento del principio de la queue
+        public object Dequeue()
         {
-            node deletedElement = head; // Guarda el nodo eliminado
-            if(length == 0){ Console.WriteLine("La cola no tiene ningún elemento"); } // Si la cola está vacía, muestra un mensaje
-            else if (head == tail) // Si hay solo un elemento, la cola se vacía completamente
+            Node deletedElement = head;
+            if(IsEmpty()) { Console.WriteLine("La cola esta vacia"); }
+            else if(length == 1)
             {
                 head = tail = null;
-                Console.WriteLine("La cola está vacía");
+                Console.WriteLine("La cola se vacio");
             }
-            else { head = head.next; } // Avanza el head al siguiente nodo
-            length--; // Reduce el tamaño de la cola
-            show(); // Muestra el estado actual de la cola
-            return deletedElement; // Devuelve el nodo eliminado
+            else { head = head.next; }
+            length--;
+            
+            return deletedElement;
         }
         
-        // Método que muestra el primer elemento de la cola sin eliminarlo
-        public void peek()
-        {
-            if(length == 0){ return; }
-            else { Console.WriteLine("El primero en la fila es: " + head.data + "\n"); }
+        // Metodo que retorna el primer elemento de la queue
+        public object Peek() 
+        { 
+            if(IsEmpty()) { return "Nadie";}
+            return head.data; 
         }
         
-        // Método que muestra el último elemento de la cola sin eliminarlo
-        public void rear()
-        {
-            if(length == 0){ return; }
-            else { Console.WriteLine("El último en la fila es: " + tail.data + "\n"); }
+        // Metodo que retorna el ultimo elemento de la queue
+        public object Rear() 
+        { 
+            if(IsEmpty()) { return "Nadie";}
+            return tail.data; 
         }
+        
+        // Metodo que retorna el tamaño de la queue
+        public int Size() { return length; }
+        
+        // Metodo que checa si la queue esta vacia
+        public bool IsEmpty() { return length == 0; }
     }
 }
