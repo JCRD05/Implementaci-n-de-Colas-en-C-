@@ -1,61 +1,88 @@
-# Implementación de una Cola en C#
+# Implementación de Cola (Queue) en C#
 
-Este proyecto implementa una **estructura de datos tipo Cola (Queue)** en C# utilizando una **lista enlazada**. La cola sigue el principio **FIFO (First In, First Out)**, donde el primer elemento en ingresar es el primero en salir.
+## Descripción
+Este proyecto implementa una estructura de datos de cola (queue) en C#, la cual sigue el principio FIFO (First In, First Out). Permite operaciones como agregar elementos, atender (eliminar) elementos y visualizar la cola.
 
-## Archivos del Proyecto
+## Estructura del Proyecto
 
-### 1. `node.cs`
-Define la estructura del nodo que se utilizará en la cola.
-- Cada nodo contiene un dato (**`data`**) y una referencia al siguiente nodo (**`next`**).
+- **Node.cs**: Define la clase `Node`, que representa un nodo en la cola.
+- **Queue.cs**: Implementa la clase `Queue`, que maneja la estructura de la cola y sus operaciones.
+- **Menu.cs**: Contiene la lógica de interacción con el usuario, permitiendo la manipulación de la cola.
+- **Program.cs**: Punto de entrada principal del programa.
 
-### 2. `queue.cs`
-Implementa la clase `queue`, que define la estructura de la cola y sus operaciones principales.
+## Implementación
 
-- **Atributos:**
-  - `head`: Apunta al primer elemento de la cola.
-  - `tail`: Apunta al último elemento de la cola.
-  - `length`: Almacena la cantidad de elementos en la cola.
+### Node.cs
+Cada nodo contiene:
+- Un valor (`data`).
+- Un puntero al siguiente nodo (`next`).
 
-- **Métodos:**
-  - `enqueue(data)`: Agrega un elemento al final de la cola.
-  - `dequeue()`: Elimina y devuelve el primer elemento de la cola.
-  - `peek()`: Muestra el primer elemento sin eliminarlo.
-  - `rear()`: Muestra el último elemento sin eliminarlo.
-  - `size()`: Muestra la cantidad de elementos en la cola.
-  - `show()`: Imprime todos los elementos de la cola.
+### Queue.cs
+La clase `Queue` maneja la estructura de la cola e implementa los siguientes métodos:
 
-### 3. `Program.cs`
-Contiene el programa principal que gestiona el menú y las operaciones con la cola.
+- `Enqueue(object data)`: Agrega un nodo al final de la cola.
+- `Dequeue()`: Elimina el primer nodo de la cola y devuelve su valor.
+- `Peek()`: Devuelve el primer elemento de la cola sin eliminarlo.
+- `Rear()`: Devuelve el último elemento de la cola sin eliminarlo.
+- `Size()`: Retorna el tamaño actual de la cola.
+- `Print()`: Imprime los elementos de la cola en orden.
+- `IsEmpty()`: Verifica si la cola está vacía.
 
-- **Funciones principales:**
-  - `Menu(ref short option)`: Muestra el menú de opciones.
-  - `Operations(queue fila, short option)`: Ejecuta la operación seleccionada por el usuario.
-  - `Main()`: Controla el flujo del programa.
+### Menu.cs
+Este archivo proporciona una interfaz de consola para interactuar con la cola. Permite al usuario:
+
+- Agregar clientes a la cola.
+- Atender al cliente actual (eliminar el primero en la cola).
+- Mostrar el estado actual de la cola.
+
+### Program.cs
+Archivo principal que ejecuta el programa e inicia la interacción con el usuario.
 
 ## Ejemplo de Uso
 
-1. **Agregar un cliente a la cola:**
-   ```plaintext
-   Introduzca el nombre del cliente: Juan
-   ```
+Al ejecutar el programa, se mostrará el siguiente flujo:
 
-2. **Atender al cliente actual (el primero en la cola):**
-   ```plaintext
-   Se ha atendido al cliente Juan.
-   ```
+```
+Sistema De Atencion De Clientes
 
-3. **Mostrar el estado actual de la cola:**
-   ```plaintext
-   Estado actual de la cola:
-   - Pedro
-   - Maria
-   ```
+¿Que accion desea realizar?
+1. Agregar Un Cliente A La Cola
+2. Atender Al Cliente Actual
+3. Mostrar El Estado Actual De La Cola
+4. Salir Del Programa
+> 1
 
-4. **Salir del programa:**
-   ```plaintext
-   Gracias por usar el programa!
-   ```
+Introduzca el nombre del cliente
+> Juan
 
-## Conclusión
-Esta implementación de colas es útil para gestionar procesos en orden de llegada, como la atención de clientes o la administración de tareas en un sistema. Se puede extender fácilmente para incluir operaciones adicionales según sea necesario.
+Lista De Clientes
+Juan
+
+¿Que accion desea realizar?
+> 1
+Introduzca el nombre del cliente
+> Maria
+
+Lista De Clientes
+Juan
+Maria
+
+¿Que accion desea realizar?
+> 2
+Se atendio al cliente Juan
+
+Lista De Clientes
+Maria
+
+¿Que accion desea realizar?
+> 3
+Lista De Clientes
+Maria
+Primero en la fila: Maria
+Ultimo en la fila: Maria
+
+¿Que accion desea realizar?
+> 4
+Gracias Por Usar El Programa!
+```
 
