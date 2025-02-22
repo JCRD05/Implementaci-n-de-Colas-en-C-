@@ -12,7 +12,7 @@ namespace Program
         static void Main()
         {
             Menu menu = new Menu();
-            menu.Show();
+            menu.Show(); // Muestra el menu
         }
     }
 }
