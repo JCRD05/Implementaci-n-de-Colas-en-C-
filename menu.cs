@@ -11,12 +11,14 @@ namespace Program
 {
     class Menu
     {
-        Queue queue;
-        object data;
-        int option;
+        Queue queue; // Queue utilizada en el programa
+        object data; // Dato ingresado a la queue
+        int option; // Variable que guarda la operacion que el usuario elige
         
+        // Constructor del menu
         public Menu(){}
         
+        // Muestra el menu
         public void Show()
         {
             Console.WriteLine("Sistema De Atencion De Clientes\n");
@@ -29,6 +31,7 @@ namespace Program
             }while(true);
         }
         
+        // Despliega en el menu las operaciones de la queue
         public void Operations(ref int option)
         {
             Thread.Sleep(500);
